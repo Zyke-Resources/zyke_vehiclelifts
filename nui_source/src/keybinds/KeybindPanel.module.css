@@ -1,0 +1,81 @@
+/* The instructional keybinds, sized in px. Centred with auto margins so max-width can use 80% of the screen */
+.wrapper {
+    position: fixed;
+    right: 0;
+    bottom: 10px;
+    left: 0;
+    pointer-events: none;
+    width: fit-content;
+    max-width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: var(--font);
+}
+
+.panel {
+    display: flex;
+    flex-direction: column;
+    background: rgba(14, 15, 18, 0.94);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+    opacity: 0;
+    transform: translateY(50px);
+    transition:
+        transform 0.25s ease-out,
+        opacity 0.25s ease-out;
+}
+
+.shown {
+    opacity: 1;
+    transform: none;
+}
+
+.header {
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 0 16px;
+    background: rgba(255, 255, 255, 0.07);
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.title {
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+
+.detail {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+/* No width of its own, so a long warning wraps inside the panel instead of widening it */
+.warning {
+    width: 0;
+    min-width: 100%;
+    box-sizing: border-box;
+    padding: 9px 16px;
+    background: rgba(225, 60, 60, 0.18);
+    color: rgb(255, 138, 138);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    line-height: 1.25;
+}
+
+.body {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 24px;
+    padding: 12px 16px 14px;
+}

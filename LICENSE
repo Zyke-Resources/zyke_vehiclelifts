@@ -1,0 +1,61 @@
+Zyke Vehicle Lifts License
+
+Copyright (c) 2026 Zyke Resources (ZykeWasTaken). All rights reserved, except as granted below.
+
+This license covers zyke_vehiclelifts, including its code, models, textures and other files (the
+"Software"). The official source is https://github.com/Zyke-Resources/zyke_vehiclelifts, together with
+any other download page run by Zyke Resources (the "Official Source").
+
+1. Definitions
+
+   "Open Release" means a project whose complete source code, including any part of the Software it
+   contains, can be downloaded by anyone, free of charge, from a public source code host such as
+   GitHub, without paying, logging in, registering or going through any store checkout. A store
+   checkout includes a free basket or free package on Tebex or any similar store.
+
+   "Closed Release" means any other project that is distributed to others, including paid releases
+   and free releases that are escrowed, obfuscated, encrypted or otherwise locked, in whole or in
+   part.
+
+2. Use on your own server
+
+   You may download, run and modify the Software on any server you run or manage, including servers
+   that make money.
+
+3. Including the Software in an Open Release
+
+   You may include the Software, modified or unmodified, in an Open Release, as long as:
+
+   a. the included Software stays part of the freely downloadable source of that Open Release;
+   b. you credit Zyke Resources as the author of the Software and link to the Official Source in
+      the project's documentation or description; and
+   c. you keep this license file with the included Software, and the included Software remains
+      under this license.
+
+4. Closed Releases
+
+   A Closed Release may not include, bundle or redistribute any part of the Software, modified or
+   unmodified. A Closed Release may depend on the Software and use it through its exports and events,
+   as long as it tells its users to download the Software from the Official Source.
+
+5. Videos and showcases
+
+   Anyone, including the authors of paid resources, may show the Software in videos, screenshots and
+   other showcases, as long as Zyke Resources is named as the source of the Software.
+
+6. Restrictions
+
+   You may not sell, resell or otherwise charge for the Software or a modified copy of it on its own,
+   and you may not claim the Software or a modified copy of it as your own work.
+
+7. Termination
+
+   Your rights under this license end automatically if you break any of its terms.
+
+8. No warranty
+
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT
+   NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+   NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT
+   OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

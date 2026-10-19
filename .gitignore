@@ -1,0 +1,9 @@
+# Blender sources and build scripts stay local
+/_source/
+/tools/
+# Debug and test mocks stay local
+nui_source/src/dev/
+_check/
+*.blend1
+nui_source/node_modules/
+/nui/
