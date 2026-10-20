@@ -51,6 +51,7 @@ return {
     ["liftPadsOff"] = {msg = "Zet alle vier de steunblokken onder de auto of klap de armen weg voordat je de brug omhoog laat gaan.", type = "error"},
     ["liftNotDown"] = {msg = "Laat de brug helemaal zakken voordat je de armen plaatst.", type = "error"},
     ["liftNotBetween"] = {msg = "De auto moet recht tussen de kolommen staan, anders kunnen de armen er niet bij.", type = "error"},
+    ["liftOutOfReach"] = {msg = "Deze auto is te klein, de armen kunnen niet bij de krikpunten.", type = "error"},
     ["liftNoPoint"] = {msg = "Onder deze auto is geen plek voor een steunblok.", type = "error"},
     ["liftArmsSet"] = {msg = "Alle vier de steunblokken zitten onder de auto.", type = "success"},
 

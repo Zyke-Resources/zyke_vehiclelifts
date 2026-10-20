@@ -76,7 +76,7 @@
 ---@field clampArm fun(swing: number, reach: number): LiftArm
 ---@field isArmParked fun(pose: LiftArm): boolean
 ---@field isPadSeated fun(arm: integer, pose: LiftArm, corner: vector3): boolean
----@field getCorners fun(lift: {coords: vector3, heading: number}, measure: LiftMeasure | LiftCar): vector3[]?
+---@field getCorners fun(lift: {coords: vector3, heading: number}, measure: LiftMeasure | LiftCar): vector3[]?, string?
 ---@field getCarHeights fun(lift: {coords: vector3, heading: number}, measure: LiftMeasure, corners: vector3[]): number, number, number
 ---@field getStops fun(car?: {gap: number, sill: number, hub: number}): LiftStop[]
 ---@field lockAt fun(travel: number): vector3 @ Lift frame, where the locks catch the carriages at that height

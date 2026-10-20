@@ -351,8 +351,8 @@ local function setArms(vehicle)
     if (not measure) then Z.notify("liftNoPoint") return end
 
     -- The server moves a car parked a little off to the same pose, see GetLiftSnap
-    local corners = TwoPost.getCorners(lift, GetLiftSnap(lift, measure) or measure)
-    if (not corners) then Z.notify("liftNotBetween") return end
+    local corners, reason = TwoPost.getCorners(lift, GetLiftSnap(lift, measure) or measure)
+    if (not corners) then Z.notify(reason) return end
 
     local sessionId, notification, text = Z.callback.await("zyke_vehiclelifts:OpenLiftArms", liftId, netId, measure)
 

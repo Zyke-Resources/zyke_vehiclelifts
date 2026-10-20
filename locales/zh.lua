@@ -51,6 +51,7 @@ return {
     ["liftPadsOff"] = {msg = "升起举升机之前，把四个托垫都放到车底下，或者把托臂收起来。", type = "error"},
     ["liftNotDown"] = {msg = "先把举升机降到底，再调整托臂。", type = "error"},
     ["liftNotBetween"] = {msg = "车要正停在两根立柱之间，托臂才够得着。", type = "error"},
+    ["liftOutOfReach"] = {msg = "这辆车太小，托臂够不到它的顶升点。", type = "error"},
     ["liftNoPoint"] = {msg = "这辆车底下没有地方放托垫。", type = "error"},
     ["liftArmsSet"] = {msg = "四个托垫都已顶在车底下。", type = "success"},
 

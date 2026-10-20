@@ -51,6 +51,7 @@ return {
     ["liftPadsOff"] = {msg = "Pon los cuatro tacos bajo el coche o recoge los brazos antes de subir el elevador.", type = "error"},
     ["liftNotDown"] = {msg = "Baja el elevador del todo antes de colocar sus brazos.", type = "error"},
     ["liftNotBetween"] = {msg = "El coche tiene que estar recto entre las columnas para que los brazos lleguen.", type = "error"},
+    ["liftOutOfReach"] = {msg = "Este coche es demasiado pequeño para que los brazos lleguen a sus puntos de elevación.", type = "error"},
     ["liftNoPoint"] = {msg = "No hay dónde poner un taco debajo de este coche.", type = "error"},
     ["liftArmsSet"] = {msg = "Los cuatro tacos están bajo el coche.", type = "success"},
 

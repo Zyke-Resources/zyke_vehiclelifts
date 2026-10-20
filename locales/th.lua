@@ -51,6 +51,7 @@ return {
     ["liftPadsOff"] = {msg = "วางแป้นรองทั้งสี่ไว้ใต้รถ หรือเก็บแขนให้เรียบร้อยก่อนยกลิฟต์ขึ้น", type = "error"},
     ["liftNotDown"] = {msg = "ลดลิฟต์ลงจนสุดก่อนตั้งแขน", type = "error"},
     ["liftNotBetween"] = {msg = "รถต้องจอดตรงระหว่างเสาทั้งสองเพื่อให้แขนเอื้อมถึง", type = "error"},
+    ["liftOutOfReach"] = {msg = "รถคันนี้เล็กเกินไป แขนยกเอื้อมไม่ถึงจุดยก", type = "error"},
     ["liftNoPoint"] = {msg = "ใต้รถคันนี้ไม่มีที่ให้วางแป้นรอง", type = "error"},
     ["liftArmsSet"] = {msg = "แป้นรองทั้งสี่อยู่ใต้รถแล้ว", type = "success"},
 

@@ -51,6 +51,7 @@ return {
     ["liftPadsOff"] = {msg = "ضع الوسائد الأربع تحت السيارة أو اطوِ الأذرع قبل أن ترفع المصعد.", type = "error"},
     ["liftNotDown"] = {msg = "أنزل المصعد إلى آخره قبل أن تضبط أذرعه.", type = "error"},
     ["liftNotBetween"] = {msg = "يجب أن تقف السيارة مستقيمة بين العمودين حتى تصل إليها الأذرع.", type = "error"},
+    ["liftOutOfReach"] = {msg = "هذه السيارة صغيرة جدًا ولا تصل الأذرع إلى نقاط الرفع فيها.", type = "error"},
     ["liftNoPoint"] = {msg = "لا يوجد مكان تحت هذه السيارة لوضع وسادة.", type = "error"},
     ["liftArmsSet"] = {msg = "الوسائد الأربع كلها تحت السيارة.", type = "success"},
 

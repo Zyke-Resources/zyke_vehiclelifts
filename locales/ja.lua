@@ -51,6 +51,7 @@ return {
     ["liftPadsOff"] = {msg = "リフトを上げる前に、4つのパッドをすべて車の下に当てるか、アームを格納してください。", type = "error"},
     ["liftNotDown"] = {msg = "アームを合わせる前に、リフトを一番下まで下げてください。", type = "error"},
     ["liftNotBetween"] = {msg = "アームが届くよう、車を支柱の間にまっすぐ停めてください。", type = "error"},
+    ["liftOutOfReach"] = {msg = "この車は小さすぎて、アームがジャッキポイントに届きません。", type = "error"},
     ["liftNoPoint"] = {msg = "この車の下にはパッドを当てられる場所がありません。", type = "error"},
     ["liftArmsSet"] = {msg = "4つのパッドがすべて車の下に当たっています。", type = "success"},
 

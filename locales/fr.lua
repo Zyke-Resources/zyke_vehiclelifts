@@ -51,6 +51,7 @@ return {
     ["liftPadsOff"] = {msg = "Place les quatre tampons sous la voiture ou range les bras avant de monter le pont.", type = "error"},
     ["liftNotDown"] = {msg = "Descends le pont jusqu'en bas avant de placer ses bras.", type = "error"},
     ["liftNotBetween"] = {msg = "La voiture doit être bien droite entre les colonnes pour que les bras l'atteignent.", type = "error"},
+    ["liftOutOfReach"] = {msg = "Cette voiture est trop petite, les bras n'atteignent pas ses points de levage.", type = "error"},
     ["liftNoPoint"] = {msg = "Il n'y a nulle part où placer un tampon sous cette voiture.", type = "error"},
     ["liftArmsSet"] = {msg = "Les quatre tampons sont sous la voiture.", type = "success"},
 

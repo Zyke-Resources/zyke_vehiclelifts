@@ -51,6 +51,7 @@ return {
     ["liftPadsOff"] = {msg = "Setz alle vier Teller unter das Auto oder klapp die Arme weg, bevor du die Hebebühne hochfährst.", type = "error"},
     ["liftNotDown"] = {msg = "Lass die Hebebühne ganz herunter, bevor du die Arme ansetzt.", type = "error"},
     ["liftNotBetween"] = {msg = "Das Auto muss gerade zwischen den Säulen stehen, damit die Arme es erreichen.", type = "error"},
+    ["liftOutOfReach"] = {msg = "Das Auto ist zu klein, die Arme erreichen seine Hebepunkte nicht.", type = "error"},
     ["liftNoPoint"] = {msg = "Unter diesem Auto ist kein Platz für einen Teller.", type = "error"},
     ["liftArmsSet"] = {msg = "Alle vier Teller sitzen unter dem Auto.", type = "success"},
 

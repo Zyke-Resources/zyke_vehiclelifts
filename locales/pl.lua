@@ -51,6 +51,7 @@ return {
     ["liftPadsOff"] = {msg = "Zanim uruchomisz podnoszenie, podłóż pod auto wszystkie cztery talerze albo odsuń ramiona.", type = "error"},
     ["liftNotDown"] = {msg = "Opuść podnośnik kolumnowy do samego dołu, zanim ustawisz ramiona.", type = "error"},
     ["liftNotBetween"] = {msg = "Auto musi stać prosto między kolumnami, żeby ramiona do niego sięgnęły.", type = "error"},
+    ["liftOutOfReach"] = {msg = "To auto jest za małe, ramiona nie sięgają jego punktów podnoszenia.", type = "error"},
     ["liftNoPoint"] = {msg = "Pod tym autem nie ma gdzie podłożyć talerza.", type = "error"},
     ["liftArmsSet"] = {msg = "Wszystkie cztery talerze są pod autem.", type = "success"},
 

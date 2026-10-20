@@ -51,6 +51,7 @@ return {
     ["liftPadsOff"] = {msg = "Pune toate cele patru tampoane sub mașină sau strânge brațele înainte să ridici elevatorul.", type = "error"},
     ["liftNotDown"] = {msg = "Coboară elevatorul până jos înainte să-i așezi brațele.", type = "error"},
     ["liftNotBetween"] = {msg = "Mașina trebuie să stea dreaptă între coloane ca brațele s-o ajungă.", type = "error"},
+    ["liftOutOfReach"] = {msg = "Mașina e prea mică pentru ca brațele să-i ajungă punctele de ridicare.", type = "error"},
     ["liftNoPoint"] = {msg = "Sub mașina aceasta nu e loc unde să pui un tampon.", type = "error"},
     ["liftArmsSet"] = {msg = "Toate cele patru tampoane sunt sub mașină.", type = "success"},
 

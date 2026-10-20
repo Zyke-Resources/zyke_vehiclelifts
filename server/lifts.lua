@@ -708,8 +708,8 @@ Z.callback.register("zyke_vehiclelifts:OpenLiftArms", function(plyId, liftId, ne
     local snapped = GetLiftSnap(lift, measure)
     measure = snapped or measure
 
-    local corners = LiftKinds[lift.kind].getCorners(lift, measure)
-    if (not corners) then return nil, "liftNotBetween" end
+    local corners, reason = LiftKinds[lift.kind].getCorners(lift, measure)
+    if (not corners) then return nil, reason end
 
     local gap, sill, hub = LiftKinds[lift.kind].getCarHeights(lift, measure, corners)
     local set = {netId = netId, vehicle = vehicle, measure = measure, corners = corners, gap = gap, sill = sill, hub = hub}

@@ -51,6 +51,7 @@ return {
     ["liftPadsOff"] = {msg = "Lifti kaldırmadan önce dört takozun hepsini arabanın altına yerleştir ya da kolları topla.", type = "error"},
     ["liftNotDown"] = {msg = "Kolları ayarlamadan önce lifti sonuna kadar indir.", type = "error"},
     ["liftNotBetween"] = {msg = "Kolların yetişmesi için araba direklerin arasında düz durmalı.", type = "error"},
+    ["liftOutOfReach"] = {msg = "Bu araba çok küçük, kollar kaldırma noktalarına yetişmiyor.", type = "error"},
     ["liftNoPoint"] = {msg = "Bu arabanın altında takoz koyacak yer yok.", type = "error"},
     ["liftArmsSet"] = {msg = "Dört takozun hepsi arabanın altında.", type = "success"},
 

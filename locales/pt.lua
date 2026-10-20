@@ -51,6 +51,7 @@ return {
     ["liftPadsOff"] = {msg = "Coloque as quatro sapatas embaixo do carro ou recolha os braços antes de subir o elevador.", type = "error"},
     ["liftNotDown"] = {msg = "Desça o elevador até o fim antes de posicionar os braços.", type = "error"},
     ["liftNotBetween"] = {msg = "O carro precisa estar reto entre as colunas para os braços o alcançarem.", type = "error"},
+    ["liftOutOfReach"] = {msg = "Este carro é pequeno demais para os braços alcançarem os pontos de elevação.", type = "error"},
     ["liftNoPoint"] = {msg = "Não há onde colocar uma sapata debaixo deste carro.", type = "error"},
     ["liftArmsSet"] = {msg = "As quatro sapatas estão embaixo do carro.", type = "success"},
 

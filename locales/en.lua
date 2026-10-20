@@ -51,6 +51,7 @@ return {
     ["liftPadsOff"] = {msg = "Set all four pads under the car, or park the arms, before you raise the lift.", type = "error"},
     ["liftNotDown"] = {msg = "Lower the lift all the way before you set its arms.", type = "error"},
     ["liftNotBetween"] = {msg = "The car has to stand square between the posts for the arms to reach it.", type = "error"},
+    ["liftOutOfReach"] = {msg = "This car is too small for the arms to reach its jacking points.", type = "error"},
     ["liftNoPoint"] = {msg = "There is nowhere under this car to set a pad.", type = "error"},
     ["liftArmsSet"] = {msg = "All four pads are under the car.", type = "success"},
 

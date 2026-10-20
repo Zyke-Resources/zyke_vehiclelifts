@@ -51,6 +51,7 @@ return {
     ["liftPadsOff"] = {msg = "Prieš keldamas keltuvą pakišk po automobiliu visas keturias atramas arba atitrauk svirtis.", type = "error"},
     ["liftNotDown"] = {msg = "Prieš nustatydamas svirtis nuleisk keltuvą iki galo.", type = "error"},
     ["liftNotBetween"] = {msg = "Automobilis turi stovėti tiesiai tarp kolonų, kad svirtys jį pasiektų.", type = "error"},
+    ["liftOutOfReach"] = {msg = "Šis automobilis per mažas, svirtys nepasiekia jo kėlimo taškų.", type = "error"},
     ["liftNoPoint"] = {msg = "Po šiuo automobiliu nėra kur pakišti atramos.", type = "error"},
     ["liftArmsSet"] = {msg = "Visos keturios atramos po automobiliu.", type = "success"},
 

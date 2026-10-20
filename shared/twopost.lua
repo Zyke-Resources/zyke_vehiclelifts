@@ -7,6 +7,10 @@ local pivotX = 1.33
 local pivotY = 0.17
 -- How near its jacking point a pad has to be to sit under it
 local seatReach = 0.05
+-- How far in under a car from the edge of its sill a pad may go, a centimetre at a time, for a small
+-- car whose sills stand nearer an arm's pivot than the arm draws in
+local insetSteps = 15
+local insetStep = 0.01
 -- How far a car's middle may stand from the lift's, across and along
 local mostOffCentre = vec2(0.45, 1.2)
 -- Across and along each arm points from its post: the right front, the right rear, the left front
@@ -116,30 +120,51 @@ function TwoPost.isPadSeated(arm, pose, corner)
     return #(TwoPost.getPad(arm, pose) - corner.xy) <= seatReach
 end
 
+-- The nearest point to the edge of a sill, going in under the car, that an arm's pad sits under
+---@param arm integer
+---@param edge vector3 @ Lift frame, the jacking point at the edge of the sill
+---@param inward vector3 @ Lift frame, a metre in under the car
+---@return vector3? corner @ Lift frame, nil where the arm reaches none of it
+local function seatCorner(arm, edge, inward)
+    for step = 0, insetSteps do
+        local corner = edge + inward * (step * insetStep)
+        if (TwoPost.isPadSeated(arm, TwoPost.reachPad(arm, corner.xy), corner)) then return corner end
+    end
+
+    return nil
+end
+
 -- A car stands either way round on a lift, so each arm takes the jacking point on its own corner
 ---@param lift {coords: vector3, heading: number}
 ---@param measure LiftMeasure | LiftCar
----@return vector3[]? corners @ Lift frame, the point under each arm, nil for a car that does not stand between the posts
+---@return vector3[]? corners @ Lift frame, the point under each arm, nil for a car the arms do not take
+---@return string? notification @ Why the arms do not take it
 function TwoPost.getCorners(lift, measure)
     local middle = GetLiftPoint(lift, measure.coords)
-    if (math.abs(middle.x) > mostOffCentre.x or math.abs(middle.y) > mostOffCentre.y) then return nil end
+    if (math.abs(middle.x) > mostOffCentre.x or math.abs(middle.y) > mostOffCentre.y) then return nil, "liftNotBetween" end
 
     local right, forward, up = GetRotationAxes(measure.rotation)
-    local corners = {}
+    local edges, inwards = {}, {}
 
     for _, point in pairs(measure.points) do
         for side = -1, 1, 2 do
-            local at = GetLiftPoint(lift, measure.coords + right * (point.x * side) + forward * point.y + up * point.z)
+            local world = measure.coords + right * (point.x * side) + forward * point.y + up * point.z
+            local at = GetLiftPoint(lift, world)
             local arm = (at.x > 0.0 and 0 or 2) + (at.y > 0.0 and 1 or 2)
-            if (corners[arm]) then return nil end
+            if (edges[arm]) then return nil, "liftNotBetween" end
 
-            corners[arm] = at
+            edges[arm] = at
+            inwards[arm] = GetLiftPoint(lift, world - right * side) - at
         end
     end
 
+    local corners = {}
+
     for arm = 1, TwoPost.arms do
-        local corner = corners[arm]
-        if (not corner or not TwoPost.isPadSeated(arm, TwoPost.reachPad(arm, corner.xy), corner)) then return nil end
+        if (not edges[arm]) then return nil, "liftNotBetween" end
+
+        corners[arm] = seatCorner(arm, edges[arm], inwards[arm])
+        if (not corners[arm]) then return nil, "liftOutOfReach" end
     end
 
     return corners

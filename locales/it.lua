@@ -51,6 +51,7 @@ return {
     ["liftPadsOff"] = {msg = "Metti tutti e quattro i tamponi sotto l'auto o ripiega i bracci prima di alzare il ponte.", type = "error"},
     ["liftNotDown"] = {msg = "Abbassa del tutto il ponte prima di posizionarne i bracci.", type = "error"},
     ["liftNotBetween"] = {msg = "L'auto deve stare dritta tra le colonne perché i bracci ci arrivino.", type = "error"},
+    ["liftOutOfReach"] = {msg = "Quest'auto è troppo piccola perché i bracci arrivino ai suoi punti di sollevamento.", type = "error"},
     ["liftNoPoint"] = {msg = "Sotto quest'auto non c'è dove mettere un tampone.", type = "error"},
     ["liftArmsSet"] = {msg = "Tutti e quattro i tamponi sono sotto l'auto.", type = "success"},
 

@@ -51,6 +51,7 @@ return {
     ["liftPadsOff"] = {msg = "Než plošinu zvedneš, dej pod auto všechny čtyři podložky, nebo odsuň ramena.", type = "error"},
     ["liftNotDown"] = {msg = "Než nastavíš ramena, spusť plošinu úplně dolů.", type = "error"},
     ["liftNotBetween"] = {msg = "Auto musí stát rovně mezi sloupy, aby na něj ramena dosáhla.", type = "error"},
+    ["liftOutOfReach"] = {msg = "Toto auto je příliš malé, ramena nedosáhnou na jeho zvedací body.", type = "error"},
     ["liftNoPoint"] = {msg = "Pod tímto autem není kam dát podložku.", type = "error"},
     ["liftArmsSet"] = {msg = "Všechny čtyři podložky jsou pod autem.", type = "success"},
 

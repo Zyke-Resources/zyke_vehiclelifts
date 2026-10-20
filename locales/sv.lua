@@ -51,6 +51,7 @@ return {
     ["liftPadsOff"] = {msg = "Sätt alla fyra lyftklossar under bilen eller fäll undan armarna innan du höjer lyften.", type = "error"},
     ["liftNotDown"] = {msg = "Sänk lyften hela vägen innan du ställer in armarna.", type = "error"},
     ["liftNotBetween"] = {msg = "Bilen måste stå rakt mellan pelarna för att armarna ska nå den.", type = "error"},
+    ["liftOutOfReach"] = {msg = "Bilen är för liten för att armarna ska nå dess lyftpunkter.", type = "error"},
     ["liftNoPoint"] = {msg = "Det finns ingenstans att sätta en lyftkloss under den här bilen.", type = "error"},
     ["liftArmsSet"] = {msg = "Alla fyra lyftklossar sitter under bilen.", type = "success"},
 
