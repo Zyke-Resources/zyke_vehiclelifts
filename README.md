@@ -15,6 +15,10 @@ This resource manages the following:
 - Synced sounds through `zyke_sounds`: the pump going up, the oil flowing back coming down, the lock release, a pawl clicking over each notch and a clunk as the carriages settle.
 - No idle cost: props stream in within 90 m, and nothing runs every frame while a lift stands still.
 
+## Showcase
+
+- [Video Link](https://youtu.be/ne1GsOWtQzw)
+
 ## Installation
 
 1. Install `zyke_lib` and `oxmysql`, then place this resource in your server's resources folder as `zyke_vehiclelifts`.
