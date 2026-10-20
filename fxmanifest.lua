@@ -3,7 +3,7 @@ game "gta5"
 author "https://discord.zykeresources.com"
 description "Car lifts other resources stand where they want, with a power unit, arms set by hand and an export surface for integrations"
 lua54 "yes"
-version "1.0.0"
+version "1.0.1"
 
 shared_scripts {
     "@zyke_lib/imports.lua",
