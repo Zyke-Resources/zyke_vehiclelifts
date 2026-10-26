@@ -164,4 +164,4 @@ Free to use and modify on your own server, including servers that make money. Se
 ## Links
 
 - [Discord Community](https://discord.zykeresources.com)
-- [Store](https://store.zykeresources.com/)
+- [Store](https://zykeresources.com/)
