@@ -17,7 +17,6 @@ client_scripts {
     "client/can_checks.lua",
     "client/server_clock.lua",
     "client/busy.lua",
-    "client/keybinds.lua",
     "client/draw.lua",
     "client/scene.lua",
     "client/interactions.lua",

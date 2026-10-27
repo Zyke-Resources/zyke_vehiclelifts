@@ -196,7 +196,7 @@ local function close()
     open = nil
 
     local scene = session.scene
-    if (scene and scene.keybinds) then LiftKeybinds.hide(scene.keybinds) end
+    if (scene and scene.keybinds) then Z.keybinds.hide(scene.keybinds) end
 
     if (scene and scene.cam) then
         local ped = scene.ped

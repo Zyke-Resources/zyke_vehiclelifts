@@ -205,7 +205,7 @@
 ---@field sending 1 | -1 | 0 @ The way this player sent the carriages all the way, 0 once they no longer go by themselves
 ---@field sentAt integer @ Game timer they were sent at
 ---@field halting? boolean @ The keys show the one that stops them
----@field keybinds? LiftKeybindItem[]
+---@field keybinds KeybindItem[]
 ---@field done boolean
 
 ---@class LiftSceneState
@@ -219,7 +219,7 @@
 ---@field moved boolean
 ---@field cam? integer
 ---@field hideAt? integer
----@field keybinds? LiftKeybindItem[] @ The keys shown over it, hidden as it closes
+---@field keybinds? KeybindItem[] @ The keys shown over it, hidden as it closes
 
 ---@class LiftSceneSession
 ---@field scene? LiftSceneState
@@ -233,7 +233,7 @@
 ---@field arms LiftArm[] @ As this scene has them
 ---@field arm integer @ The corner the view is at
 ---@field holding boolean @ The hand has the pad
----@field keybinds? LiftKeybindItem[]
+---@field keybinds? KeybindItem[]
 ---@field scene? LiftSceneState
 ---@field ready? boolean @ The view has arrived
 ---@field result? LiftSceneResult

@@ -391,8 +391,8 @@ end
 local function setPowerKeys(power)
     local items = {
         -- The loop reads the held keys itself to follow the hold
-        {label = T("control:liftUp"), key = "E", func = function() end},
-        {label = T("control:liftDown"), key = "Q", func = function() end},
+        {label = T("control:liftUp"), key = "E"},
+        {label = T("control:liftDown"), key = "Q"},
         {label = T("control:liftTop"), key = "W", func = function() sendLift(power, 1) end},
         {label = T("control:liftBottom"), key = "S", func = function() sendLift(power, -1) end},
     }
@@ -400,10 +400,15 @@ local function setPowerKeys(power)
     if (power.sending ~= 0) then items[#items + 1] = {label = T("control:halt"), key = "SPACE", func = function() sendLift(power, 0) end} end
 
     items[#items + 1] = {label = T("control:leave"), key = "ESC", hiddenKey = "BACKSPACE", func = function() power.done = true end}
-    power.keybinds = items
+
+    -- The panel belongs to the table, so the keys go into the one shown already
+    local keybinds = power.keybinds
+
+    for i = 1, math.max(#keybinds, #items) do keybinds[i] = items[i] end
+
     power.halting = power.sending ~= 0
 
-    LiftKeybinds.show(items, {title = T("title:workLift")})
+    Z.keybinds.show(keybinds, {title = T("title:workLift")})
 end
 
 -- The player at the power unit until they leave it: a key for as long as it is held, and one that
@@ -431,7 +436,7 @@ local function workLift(liftId)
     if (Z.loadDict(workAnim.dict, true, 3000)) then TaskPlayAnim(ped, workAnim.dict, workAnim.clip, 4.0, 4.0, -1, 1, 0.0, false, false, false) end
 
     ---@type LiftPowerSession
-    local power = {liftId = liftId, sessionId = sessionId, pressed = 0, heldOver = true, sending = 0, sentAt = 0, done = false}
+    local power = {liftId = liftId, sessionId = sessionId, pressed = 0, heldOver = true, sending = 0, sentAt = 0, keybinds = {}, done = false}
 
     setPowerKeys(power)
 
@@ -456,12 +461,12 @@ local function workLift(liftId)
 
         for i = 1, #lookControls do EnableControlAction(0, lookControls[i], true) end
 
-        LiftKeybinds.handle(power.keybinds)
+        Z.keybinds.handle(power.keybinds)
 
         Wait(0)
     end
 
-    LiftKeybinds.hide(power.keybinds)
+    Z.keybinds.hide(power.keybinds)
     TriggerServerEvent("zyke_vehiclelifts:LeaveLift", sessionId)
     StopAnimTask(ped, workAnim.dict, workAnim.clip, 2.0)
     LiftScene.holdPauseMenu()

@@ -93,18 +93,24 @@ local function setButtons(game)
     game.context = context
 
     -- The loop reads the mouse button itself to follow the hold
-    local rows = {{label = T("control:moveArm"), key = "LEFTMOUSE", func = function() end}}
+    local rows = {{label = T("control:moveArm"), key = "LEFTMOUSE"}}
 
     if (not game.holding) then
         rows[#rows + 1] = {label = T("control:nextArm"), key = {"A", "D"}, func = function(key) stepCorner(game, key == "A" and 1 or -1) end}
     end
 
     rows[#rows + 1] = {label = T("control:leave"), key = "ESC", hiddenKey = "BACKSPACE", func = function() finish(game, "cancelled") end}
-    game.keybinds = rows
-    -- The scene hides them as it closes, however it ends
-    game.scene.keybinds = rows
 
-    LiftKeybinds.show(rows, {title = T("title:setArms")})
+    -- The panel belongs to the table, so the keys go into the one shown already
+    local keybinds = game.keybinds or {}
+
+    for i = 1, math.max(#keybinds, #rows) do keybinds[i] = rows[i] end
+
+    game.keybinds = keybinds
+    -- The scene hides them as it closes, however it ends
+    game.scene.keybinds = keybinds
+
+    Z.keybinds.show(keybinds, {title = T("title:setArms")})
 end
 
 ---@param sound {name: string, set: string}
@@ -172,7 +178,7 @@ local function updateInput(game, dt)
     local near = point ~= nil and #(point.xy - pad) <= grabReach
 
     setButtons(game)
-    LiftKeybinds.handle(game.keybinds)
+    Z.keybinds.handle(game.keybinds)
     SetMouseCursorActiveThisFrame()
     SetMouseCursorStyle(game.holding and cursors.drag or (near and cursors.grab or cursors.aim))
 

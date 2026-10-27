@@ -65,7 +65,8 @@ local boxHeights = {}
 ---@field along? number @ Metres along the line from the lift it runs through
 ---@field warning? string @ Locale key of why it can not be placed or taken away here
 ---@field ghosts table<string, integer> @ The copy's props, by piece
----@field keybinds LiftKeybindItem[]
+---@field keybinds KeybindItem[]
+---@field keysChanged? boolean @ A key changed what the keys are, so they are set again before the next frame reads them
 ---@field shown? string @ What the panel shows, so it is only sent when it changes
 ---@field busy boolean @ The server is being asked
 ---@field done boolean
@@ -279,7 +280,7 @@ local function showPanel(session)
 
     session.shown = shown
 
-    LiftKeybinds.show(session.keybinds, {title = title, detail = detail, warning = warning})
+    Z.keybinds.show(session.keybinds, {title = title, detail = detail, warning = warning})
 end
 
 -- The server places it, while the frames go on
@@ -346,7 +347,7 @@ local function setKeys(session)
         -- On a line, the lift it lines up with turns it. With none near it stands free
         if (not session.onLine) then
             keybinds[#keybinds + 1] = {label = T("control:placeTurn"), key = {"SCROLLUP", "SCROLLDOWN"}, func = function(key) turn(session, key) end}
-            keybinds[#keybinds + 1] = {label = T("control:placeTurnFast"), key = "LEFTSHIFT", func = function() end}
+            keybinds[#keybinds + 1] = {label = T("control:placeTurnFast"), key = "LEFTSHIFT"}
         end
 
         keybinds[#keybinds + 1] = {
@@ -356,8 +357,7 @@ local function setKeys(session)
                 session.lined = not session.lined
                 -- Free again, it stays turned the way the line had it
                 session.heading = session.placeHeading
-
-                setKeys(session)
+                session.keysChanged = true
             end,
         }
     end
@@ -368,13 +368,18 @@ local function setKeys(session)
         func = function()
             session.removing = not session.removing
             session.hover = nil
-
-            setKeys(session)
+            session.keysChanged = true
         end,
     }
     keybinds[#keybinds + 1] = {label = T("control:placeDone"), key = "RIGHTMOUSE", hiddenKey = {"ESC", "BACKSPACE"}, func = function() session.done = true end}
 
-    session.keybinds = keybinds
+    -- The panel belongs to the table, so the keys go into the one shown already. Z.keybinds.handle is still going
+    -- through it while a key runs, which is why the keys only flag a change for the next frame
+    local shown = session.keybinds
+
+    for i = 1, math.max(#shown, #keybinds) do shown[i] = keybinds[i] end
+
+    session.keysChanged = false
     session.shown = nil
 end
 
@@ -508,7 +513,7 @@ local function runFrame(session)
         session.line = nil
     end
 
-    if ((session.line ~= nil) ~= session.onLine) then setKeys(session) end
+    if (session.keysChanged or (session.line ~= nil) ~= session.onLine) then setKeys(session) end
 
     updateWarning(session)
     poseGhosts(session)
@@ -521,7 +526,7 @@ local function runFrame(session)
     end
 
     DisablePlayerFiring(PlayerId(), true)
-    LiftKeybinds.handle(session.keybinds)
+    Z.keybinds.handle(session.keybinds)
 end
 
 -- Takes the tool out until the admin puts it away. With it out already, it changes to the new kind
@@ -558,7 +563,7 @@ RegisterNetEvent("zyke_vehiclelifts:PlaceLift", function(kind)
         end
     end
 
-    LiftKeybinds.hide(session.keybinds)
+    Z.keybinds.hide(session.keybinds)
     clearGhosts(session)
 
     for _, name in pairs(LiftSets[session.kind].models) do
@@ -575,5 +580,4 @@ AddEventHandler("onResourceStop", function(resource)
     if (resource ~= ResName or not placing) then return end
 
     clearGhosts(placing)
-    LiftKeybinds.hide(placing.keybinds)
 end)
