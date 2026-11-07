@@ -43,7 +43,7 @@ end
 function GetLiftRefusal(data)
     for _, entry in pairs(rules) do
         local called, allowed, text = call(entry, "canWork", data)
-        if (called and allowed == false) then return type(text) == "string" and text or T("actionUnavailable") end
+        if (called and allowed == false) then return type(text) == "string" and text or TFor(data.source, "actionUnavailable") end
     end
 
     return nil

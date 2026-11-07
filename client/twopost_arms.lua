@@ -37,6 +37,9 @@ local parkSound = {name = "NAV_UP_DOWN", set = "HUD_FRONTEND_DEFAULT_SOUNDSET"}
 local ring = {1, 2, 4, 3}
 local frameZ = vec3(0.0, 0.0, 1.0)
 
+---@type integer? @ zyke_lib id of the cars' target option
+local armsTarget
+
 ---@param game LiftArmsGame
 ---@param result LiftSceneResult
 local function finish(game, result)
@@ -427,13 +430,8 @@ RegisterLiftInteractionPoints(function(add, pedCoords)
     end
 end)
 
-CreateThread(function()
-    -- zyke_lib picks the target system while it loads
-    while (not HasLoaderFinished) do Wait(100) end
-
-    if (UsesLiftInterestPoints()) then return end
-
-    Z.target.addGlobalVehicle({
+local function addArmsTarget()
+    armsTarget = Z.target.addGlobalVehicle({
         distance = armsReach,
         options = {
             {
@@ -452,6 +450,23 @@ CreateThread(function()
             },
         },
     })
+end
+
+-- The target option keeps the label it was added with
+local function readdArmsTarget()
+    if (armsTarget) then Z.target.remove(armsTarget) end
+
+    addArmsTarget()
+end
+
+CreateThread(function()
+    -- zyke_lib picks the target system while it loads
+    while (not HasLoaderFinished) do Wait(100) end
+
+    if (UsesLiftInterestPoints()) then return end
+
+    addArmsTarget()
+    Z.onLanguageChange(readdArmsTarget)
 end)
 
 ---@param resource string

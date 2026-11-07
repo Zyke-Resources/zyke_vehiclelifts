@@ -12,6 +12,9 @@ zyke_systems {
     "notification",
 }
 
+-- Shows each player the language they picked, see zyke_lib's README
+zyke_player_language "yes"
+
 shared_scripts {
     "@zyke_lib/imports.lua",
     "shared/config.lua",

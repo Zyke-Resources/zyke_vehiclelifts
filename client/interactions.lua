@@ -106,6 +106,10 @@ local function interact()
     end)
 end
 
+local function registerInteractKey()
+    Z.registerKey(interactKey, "E", T("keybind:liftInteract"), interact)
+end
+
 -- Target is set by zyke_lib once its loader finishes, so this is only asked after HasLoaderFinished
 ---@return boolean usesInterestPoints @ False when the target menu offers the lifts instead
 function UsesLiftInterestPoints()
@@ -119,7 +123,8 @@ function UsesLiftInterestPoints()
     if (wantsTarget) then print(("^3[%s] interaction is set to \"target\" but neither ox_target nor qb-target is started, using interaction points^7"):format(ResName)) end
 
     -- Only registered for interaction points, so target mode does not list a key that does nothing
-    Z.registerKey(interactKey, "E", T("keybind:liftInteract"), interact)
+    registerInteractKey()
+    Z.onLanguageChange(registerInteractKey)
 
     return true
 end

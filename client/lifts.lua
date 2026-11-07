@@ -37,6 +37,8 @@ local shown = {}
 local held = {}
 local streaming = false
 local working = false
+---@type integer[] @ zyke_lib ids of the power units' target options
+local powerTargets = {}
 
 ---@param liftId integer
 ---@return ZykeVehicleLift? lift
@@ -538,19 +540,9 @@ exports("IsWorkingLift", IsWorkingLift)
 ---@return integer? liftId @ The lift the vehicle stands between the posts of
 exports("GetLiftUnder", FindLiftUnder)
 
-CreateThread(function()
-    -- The carriages travel by the server's game timer, which is asked for before anyone works a lift
-    ServerClock.timer()
-
-    setLifts(GlobalState.zykeVehicleLifts)
-
-    -- zyke_lib picks the target system while it loads
-    while (not HasLoaderFinished) do Wait(100) end
-
-    if (UsesLiftInterestPoints()) then return end
-
+local function addPowerTargets()
     for kindName, set in pairs(LiftSets) do
-        Z.target.addModel(set.models.power, {
+        powerTargets[#powerTargets + 1] = Z.target.addModel(set.models.power, {
             distance = powerReach,
             options = {
                 {
@@ -571,6 +563,32 @@ CreateThread(function()
             },
         })
     end
+end
+
+-- Target options keep the label they were added with
+local function readdPowerTargets()
+    for i = 1, #powerTargets do
+        Z.target.remove(powerTargets[i])
+    end
+
+    powerTargets = {}
+
+    addPowerTargets()
+end
+
+CreateThread(function()
+    -- The carriages travel by the server's game timer, which is asked for before anyone works a lift
+    ServerClock.timer()
+
+    setLifts(GlobalState.zykeVehicleLifts)
+
+    -- zyke_lib picks the target system while it loads
+    while (not HasLoaderFinished) do Wait(100) end
+
+    if (UsesLiftInterestPoints()) then return end
+
+    addPowerTargets()
+    Z.onLanguageChange(readdPowerTargets)
 end)
 
 ---@param resource string
